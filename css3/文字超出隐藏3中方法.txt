@@ -1,0 +1,35 @@
+http://c7sky.com/text-overflow-ellipsis-on-multiline-text.html
+js方法
+jQuery
+除了各个浏览器私有的属性，有没有跨浏览器的解决方法呢？当然是通过js实现啦！（通过从后向前逐个删除末尾字符，直至元素的高度小于父元素高度）
+.figcaption {
+    background: #EEE;
+    width: 410px;
+    height: 3em;
+    margin: 1em;
+}
+.figcaption p {
+    margin: 0;
+    line-height: 1.5em;
+}
+
+$(".figcaption").each(function(i){
+    var divH = $(this).height();
+    var $p = $("p", $(this)).eq(0);
+    while ($p.outerHeight() > divH) {
+        $p.text($p.text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, "..."));
+    };
+});
+
+css方法
+-webkit-line-clamp
+Webkit支持一个名为-webkit-line-clamp的属性，他其实是一个WebKit-Specific Unsupported Property，也就是说这个属性并不是标准的一部分，可能是Webkit内部使用的，或者被弃用的属性。但是既然被人发现了，而且能用，为什么不试试呢~o(∩_∩)o
+p {
+  width: 100px;
+height: 50px;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
