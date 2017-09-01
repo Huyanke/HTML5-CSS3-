@@ -1,0 +1,25 @@
+<input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')"  id="date">
+
+1、关闭iOS键盘首字母自动大写
+      
+IOS的机子，默认英文输入法状态下，首字母是自动大写的，有时候挺烦人的。
+我们写页面的时候有没有办法把这个自动大写关闭呢？autocapitalize的属性可以实现：   
+在iOS中，默认情况下键盘是开启首字母大写的功能的，如果业务不想出现首字母大写，
+   <input type="text" autocapitalize="off" />
+
+2、关闭iOS输入自动修正
+
+和英文输入默认自动首字母大写那样，IOS还做了一个功能，默认输入法会开启自动修正输入内容，这样的话，用户经常要操作两次。所以这个功能有方便和不方便之处，如果有些业务不需要这个功能，可以通过前端代码关闭。
+
+<input type="text" autocorrect="off" />
+
+3、邮箱地址识别
+
+在 Android （iOS不会）上，浏览器会自动识别看起来像邮箱地址的字符串，不论有你没有加上邮箱链接，当你在这个字符串上长按，会弹出发邮件的提示。
+
+关闭邮箱地址识别：
+
+<meta name="format-detection" content="email=no" />
+开启邮件发送：
+
+<a mailto:dooyoe@gmail.com">dooyoe@gmail.com</a>
